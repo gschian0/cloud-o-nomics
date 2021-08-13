@@ -100,3 +100,32 @@ h2 {
   margin-top: -50px;
   display: block;
 }
+
+.box {
+  align-self: flex-end;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  background-color: #f44336;
+  height: 20px;
+  margin: 0 auto 0 auto;
+  transform-origin: bottom;
+  width: 200px;
+}
+.bounce-2 {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+
+  animation-name: bounce-2;
+  animation-timing-function: ease;
+}
+@keyframes bounce-2 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
