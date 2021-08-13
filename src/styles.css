@@ -9,15 +9,14 @@ canvas {
   width: 100vw;
   height: 100vh;
   z-index: -1;
+  filter: blur(0.5px);
 }
 h1 {
-  z-index: 1;
-  display: inline;
   position: relative;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  font-size: 15vh;
+  top: 50%;
+  font-size: 7vh;
+  /* -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: black; */
 }
 
 #overlay span {

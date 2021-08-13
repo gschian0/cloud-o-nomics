@@ -122,7 +122,7 @@ void main()	{
   //newUV.y = sin(2.*vPosition.x+0.5+time*0.5);
   //newUV.x = sin(20.*vPosition.y+time*0.5*snoise(vec3(newUV.y, newUv.y, time)));
   float finalCol = snoise(2.*vec3(cloudUV.x, cloudUV.y, time +3. *0.7))+0.035;
-  finalCol += 0.2*snoise(4.*vec3(cloudUV.x, cloudUV.y, time *0.3))-0.5;
+  finalCol += 0.6*snoise(4.*vec3(cloudUV.x, cloudUV.y, time *0.3))-0.5;
   finalCol += 0.1*snoise(10.*vec3(vUv.y , vUv.x, -time+20. *0.5))+0.1;
   finalCol -= 0.3*snoise(4.*vec3(vUv.y , vUv.x, time *0.83))+0.05;
   finalCol += 0.3*snoise(8.*vec3(vUv.x , vUv.y, time *0.85))+0.1;
@@ -131,7 +131,7 @@ void main()	{
   //finalCol /= 2.;
   vec3 finalMix = mix(vec3(0.0), vec3(finalCol), circle*circle);
   finalMix = clamp(finalMix, 0.,1.);
-	gl_FragColor = vec4(vec3(finalMix), finalMix);
+	gl_FragColor = vec4(vec3(1.-finalMix*finalMix*finalMix), 0.2-finalMix*finalMix);
 }
   `);
 
@@ -239,7 +239,7 @@ void main()	{
   finalCol /= 6.;
   vec3 finalMix = mix(vec3(0.0), vec3(finalCol), circle);
   finalMix = clamp(finalMix, 0.,1.);
-	gl_FragColor = 1.-vec4(vec3(finalMix), finalMix);
+	gl_FragColor = 1.-vec4(vec3(finalMix*finalMix*finalMix), finalMix);
 }
   `);
 
@@ -423,7 +423,7 @@ export default class Sketch {
     // this.box2.position.z += 0.00;
     this.box3.position.x = -0.1 * Math.sin(this.time);
     this.box3.position.y = -0.1 * Math.cos(this.time);
-    // this.box3.position.z = 0.;
+    this.box3.position.z = -0.1 * Math.cos(this.time);
     this.shaderMat.uniforms.time.value = this.time * 1;
     this.shaderMat2.uniforms.time.value = this.time * 0.5;
     requestAnimationFrame(this.render.bind(this));
